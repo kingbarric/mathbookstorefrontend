@@ -1,0 +1,17 @@
+curl --location --request POST 'http://cpg-api.mtnpay.mtnnigeria.net/v2/transact' \
+--header 'Authorization: Bearer MAPI;2nymCM36hrTyO6AupTQe_8e656f8b3ae84fcaa31bc4af6f3bbfd0' \
+--header 'Signature: C1B7ACC05E5ACAF54DF8379334AAB1C6448CEDBB897587B7C7FB2AAC772645374F5FFF7E11F0A23173CA71AE7D3CE822BD0E7368D2B4D4D13290D9694119C976' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "request_ref": "1000-2000-3000",
+    "request_type": "collect",
+    "auth": {
+        "auth_provider": "MPGS",
+        "type": "custom",
+        "secure": "y8lBHcS2ghZ7d+kRFq0S7hBvu7WxpFWh0tb4mMdq9KkSVubabITamjChXLYrXfkd"
+    },
+    "transaction": {
+      "transaction_ref":"696104722916",
+      "amount":10 
+   }
+}

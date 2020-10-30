@@ -1,0 +1,83 @@
+<h3> List of search result , TOTAL: {{total}}</h3>
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ISBN</th>
+      <th scope="col">Title</th>
+      <th scope="col">Category</th>
+      <th scope="col">Publisher</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity In Hand</th>
+      <th scope="col">Image</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of data | paginate: { itemsPerPage: 5, currentPage: p }">
+      <th scope="row">{{d.isbn}}</th>
+      <td>{{d.title}}</td>
+      <td>{{d.category}}</td>
+      <td>{{d.publisher}}</td>
+      <td>{{d.price}}</td>
+      <td>{{d.quantityOnHand}}</td>
+      <td><img src="{{d.image}}" height="200"></td>
+  
+    </tr>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </tbody>
+</table> -->
+<div class="container">
+  <div class="row">
+    <div class="md-3 m-2 "  *ngFor="let d of data | paginate: { itemsPerPage: 2, currentPage: p }">
+      <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{d.title}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{d.category}}</h5>
+          <p class="card-text">    <img src="{{d.image}}" width="200"></p>
+        </div>
+        <div class="card-footer">
+          <a  class="btn btn-primary btn-block" (click)="open(content,d)">Details</a>
+        </div>
+      </div>
+   
+    </div>
+     
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img src="{{val.image}}" width="300">
+<table class="table table-stripe">
+  <tr>
+    <td> Title </td>
+    <td> {{val.title}}</td>
+  </tr>
+  <tr>
+    <td> Category </td>
+    <td> {{val.category}}</td>
+  </tr>
+  <tr>
+    <td> Publisher </td>
+    <td> {{val.publisher}}</td>
+  </tr>
+  <tr>
+    <td> Price </td>
+    <td> {{val.price}}</td>
+  </tr>
+  <tr>
+    <td> Quantity </td>
+    <td> {{val.quantity}}</td>
+  </tr>
+</table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>

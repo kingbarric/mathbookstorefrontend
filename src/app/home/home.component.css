@@ -1,0 +1,31 @@
+
+h1 {
+	font-family: 'Anton', sans-serif;
+}
+
+.slogan {
+	font-family: 'Pacifico', cursive;
+}
+
+p {
+	font-family: 'Dosis', sans-serif;
+}
+
+h2 {
+	font-family: 'Lobster', cursive;
+}
+
+img {
+	margin: 30px 0px 0px 0px;
+}
+
+ul {
+	margin: 5px 20px 5px 0px;
+	font-family: 'Dosis', sans-serif;
+}
+
+.img-mod {
+	-moz-box-shadow: 0 0 5px 5px #888;
+	-webkit-box-shadow: 0 0 5px 5px #888;
+	box-shadow: 0 0 5px 5px #888;
+}
