@@ -17,6 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchResultComponent } from './search-result/search-result.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NgxPaginationModule,
     AppRoutingModule,
     HttpClientModule,
+    FontAwesomeModule,
+    NgHttpLoaderModule,
     NgbModule
   ],
   providers: [],

@@ -14,9 +14,9 @@ export class CrudService {
   products = [];
   constructor(private http: HttpClient)
   {
- //this.basePath = 'https://emmabookstore.herokuapp.com/';
+ //this.basePath = 'https://booker125.herokuapp.com/';
      this.basePath =  'http://localhost:8080/';
-     this.baseUrl = this.basePath + 'endpoint/';
+     this.baseUrl = this.basePath + 'bookstore/';
      this.header = new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'application/json',

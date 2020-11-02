@@ -1,38 +1,42 @@
 <div class="container">
-  <h2>Book Catalogue</h2> <button class="btn btn-lg btn-outline-primary" (click)="openModal(content)">Add new Book</button>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ISBN</th>
-        <th scope="col">Title</th>
-        <th scope="col">Category</th>
-        <th scope="col">Publisher</th>
-        <th scope="col">Price</th>
-        <th scope="col">Quantity In Hand</th>
-        <th scope="col">Image</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let d of data">
-        <th scope="row">{{d.isbn}}</th>
-        <td>{{d.title}}</td>
-        <td>{{d.category}}</td>
-        <td>{{d.publisher}}</td>
-        <td>{{d.price}}</td>
-        <td>{{d.quantity}}</td>
-        <td><img src="{{d.image}}" height="40"></td>
-        <td>
-          <button class="btn btn-lg btn-outline-warning" (click)="open(content,d)">Edit Book</button>
-          
-        </td>
-        <td><button class="btn btn-danger btn-sm" (click)="deleteBook(d.isbn)" >Delete</button></td>
-      </tr>
-     
-    </tbody>
-  </table>
+  <button class="btn btn-lg btn-outline-primary" (click)="openModal(content)">Add new  <i class="fa fa-plus"></i></button>
+ 
 
+</div>
+<h2>List of Books</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Title </th>
+            <th>Category </th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Author</th>
+            <th>Image</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of data">
+            <th scope="row">{{d.isbn}}</th>
+            <td>{{d.title}}</td>
+            <td>{{d.category}}</td>
+            <td>{{d.price}}</td>
+            <td>{{d.quantity}}</td>
+            <td>{{d.author}}</td> 
+            <td><img src="{{d.image}}" height="40"></td>
+            <td>
+              <button class="btn btn-sm btn-success" (click)="open(content,d)"><i class="fa fa-edit"></i> </button> 
+              <button class="btn btn-danger btn-sm" (click)="deleteBook(d.isbn)" ><i class="fa fa-trash"></i> </button> 
+            </td>
+  
+          </tr>
+     
+        <tbody>
+    </table>
+    <i>{{loading}}</i>
 </div>
  
 
@@ -43,7 +47,7 @@
  
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add new book</h4>
+    <h4 class="modal-title" id="modal-basic-title">Book Edit</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -61,7 +65,7 @@
           
         </div>
         <div class="form-group">
-          <label for=" ">Category of book </label>
+          <label for=" ">Book Category </label>
           <select class="form-control" formControlName="category" >
               <option value="Books"> Books</option>
               <option value="Audio_Books"> Audio Books</option>
@@ -71,8 +75,8 @@
           
         </div>
         <div class="form-group">
-          <label for="">Author / Publisher</label>
-          <select class="form-control" formControlName="publisher" >
+          <label for="">Author </label>
+          <select class="form-control" formControlName="author" >
               <option value="Harper_Collins"> Harper Collins</option>
               <option value="Penguins"> Penguins  </option>
               <option value="St_Pauls_Publication"> St Pauls Publication</option>
@@ -114,7 +118,7 @@
           
         </div>
         <div class="form-group">
-           <button type="submit" class="btn btn-outline-warning">Save book</button>
+           <button type="submit" class="btn btn-outline-warning">Save</button>
            <div> <h3 class="text-warning">{{message}}</h3></div>
         </div>
       
@@ -125,5 +129,6 @@
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
   </div>
 </ng-template>
+
 
 

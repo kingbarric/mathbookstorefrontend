@@ -1,63 +1,46 @@
  
+		
+  <section class="page-wrap">
 
-<style>
-  
-</style>
 
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
-
- 
-  <!-- <span>Welcome to online bookstore</span>
-    <div class="spacer"></div> -->
-  
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#"> <img
-        width="40"
-        alt="Angular Logo"
-        src="/assets/bookstore.jpg"
-      /></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" routerLinkActive="active-link" routerLink="/home-page">Home  </a>
-          <a class="nav-item nav-link" routerLinkActive="active-link"   routerLink="/site-map-page">Site map</a>
-          <a class="nav-item nav-link" routerLinkActive="active-link"  routerLink="/search-page">Search catalogue</a>
-          <a class="nav-item nav-link  " routerLinkActive="active-link"  routerLink="/maintanance-page">Maintenance page</a>
-        </div>
+    <header> <!-- Defining the header section of the page with the appropriate tag -->
+      
+      <div>
+        <h1>Math Bookstore</h1>
+       <p><img src="assets/booklogo.png" height="100" alt=""/></p>
       </div>
-    </nav>
-</div>
 
-<div class="content" role="main">
-
-  <!-- Highlight Card -->
+      <nav> <!-- The nav link semantically marks your main site navigation -->
+        <ul>
+          <li>  <a class="nav-item nav-link active" routerLinkActive="active-link" routerLink="/home-page">Home </a></li>
+          <li><a class="nav-item nav-link" routerLinkActive="active-link"   routerLink="/site-map-page">Site map</a></li>
+          <li> <a class="nav-item nav-link" routerLinkActive="active-link"  routerLink="/search-page">SearchBook</a></li>
+          <li> <a class="nav-item nav-link  " routerLinkActive="active-link"  routerLink="/maintanance-page">Maintenance </a></li> 
+        </ul>
+      </nav> 
+    </header> 
+    <article id="block1" class="module-block">
   
+      <router-outlet></router-outlet>
+    </article>
+    
+
+  
+
+    
+  
+    
+  </section><!-- page-wrap -->
+    
+
+  <footer> 
  
 
-  <!-- Next Steps -->
-
-
-  <div class="card-container">
+    <p>Copyright 2020 - <a href="#">Mathew Book store</a></p>
    
-     <router-outlet></router-outlet>
-  </div>
 
-  
-
-  <!-- Footer -->
-  <footer>
-    
-      <a href="#" >
-         
-      </a>
   </footer>
 
-  
-</div>
 
-
-
-
+  <ng-http-loader></ng-http-loader>
+ 

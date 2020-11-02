@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CrudService } from '../service/crud.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Params } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-maintenance',
@@ -18,6 +19,7 @@ export class MaintenanceComponent implements OnInit {
   message = '';
   data;
   isbn=null;
+  loading='loading.....'
   constructor(private crud: CrudService,private modalService: NgbModal, private route :ActivatedRoute,) { 
    
  
@@ -31,15 +33,15 @@ export class MaintenanceComponent implements OnInit {
   saveBook() {
 
     const data = this.form.value;
-    data.image = this.cardImageBase64;
+    data.imageFile = this.cardImageBase64;
     console.log(data);
     if (!this.form.valid) {
-      this.message = 'Please fill in all fields';
-      Swal.fire('Oops!',this.message,'error');
+      this.message = 'All fields are not filled';
+      Swal.fire('Error!',this.message,'warning');
       return;
     }
     if(this.isbn==null){
-    this.crud.postAll('savebook', data)
+    this.crud.postAll('add', data)
       .then((e: any) => {
         this.message = e.message;
         
@@ -55,7 +57,7 @@ export class MaintenanceComponent implements OnInit {
       })
     }else{
       //update
-      this.crud.update('updatebook', data)
+      this.crud.update('update', data)
       .then((e: any) => {
         this.message = e.messagae;
         Swal.fire("Okay",e.message,'success');
@@ -76,7 +78,7 @@ export class MaintenanceComponent implements OnInit {
       isbn: new FormControl("", [Validators.required]),
       title: new FormControl("", [Validators.required]),
       category: new FormControl("", [Validators.required]),
-      publisher: new FormControl("", [Validators.required]),
+      author: new FormControl("", [Validators.required]),
       price: new FormControl("", [Validators.required]),
       quantity: new FormControl("", [Validators.required])
     }, {
@@ -136,10 +138,11 @@ export class MaintenanceComponent implements OnInit {
     }
   }
   findAllBooks() {
-    this.crud.findAll("findallbook")
+    this.crud.findAll("findall")
       .then((e: any) => {
         this.data = e;
         console.log(this.data);
+        this.loading='';
       })
   }
   deleteBook(id) {
@@ -153,7 +156,7 @@ export class MaintenanceComponent implements OnInit {
       cancelButtonText: 'No, keep it'
     }).then((result) => {
       if (result.value) {
-        this.crud.delete("deletebook/" + id)
+        this.crud.delete("delete/" + id)
         .then((e: any) => {
           Swal.fire("Okay",e.message,'success');
           this.findAllBooks();
@@ -171,9 +174,9 @@ export class MaintenanceComponent implements OnInit {
     this.form.controls['isbn'].patchValue(data.isbn);
     this.form.controls['title'].patchValue(data.title);
     this.form.controls['category'].patchValue(data.category);
-    this.form.controls['publisher'].patchValue(data.publisher);
+    this.form.controls['author'].patchValue(data.author);
     this.form.controls['price'].patchValue(data.price);
-    this.form.controls['quantityOnHand'].patchValue(data.quantityOnHand);
+    this.form.controls['quantity'].patchValue(data.quantity);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
      // this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
