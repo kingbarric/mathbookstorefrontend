@@ -21,7 +21,7 @@ export class CatalogueSearchComponent implements OnInit {
       lowerPrice: new FormControl('', [Validators.required]),
       upperPrice: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
-      publisher: new FormControl('', [Validators.required])
+      author: new FormControl('', [Validators.required])
     }, {
       // validator: this.MustMatch('password', 'confirmPassword')
     });
@@ -31,7 +31,7 @@ export class CatalogueSearchComponent implements OnInit {
     const data = this.form.value;
     console.log(data);
     this.route.navigate(['/result-page'],
-       { queryParams: { lowerPrice: data.lowerPrice, upperPrice: data.upperPrice, category: data.category, publisher: data.publisher} });
+       { queryParams: { lowerPrice: data.lowerPrice, upperPrice: data.upperPrice, category: data.category, author: data.author} });
 
   }
 }

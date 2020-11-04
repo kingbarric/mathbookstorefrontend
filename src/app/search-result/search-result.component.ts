@@ -19,7 +19,7 @@ export class SearchResultComponent implements OnInit {
     .subscribe(params => {
       console.log(params);  
      
-      this.crud.postAll('search',params)
+      this.crud.postAll('searchbook',params)
       .then((e:any)=>{
           console.log(e);
           this.data = e;
